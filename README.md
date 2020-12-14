@@ -7,5 +7,5 @@ Sorting Algorithms Visualizer built with Python and Tkinter
   <li>Insertion Sort <br /></li>
   <li>Quick Sort <br /></li>
   <li>Merge Sort <br /></li>
-</ul>
-Bogo Sort
+  <li>Bogo Sort <br /></li>
+<ul>
