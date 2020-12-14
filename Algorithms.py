@@ -21,8 +21,6 @@ def bubble_sort(data, draw, timeTick, isDrawing):
         for j in range(len(data) - 1):
             if j > len(data) - i - 1:
                 continue
-            if isDrawing:
-                draw(data, ['green' if x == j or x == j + 1 or x >= len(data) - i else 'red' for x in range(len(data))])
             cntChecks += 1
             if data[j] > data[j + 1]:
                 tempCnt += 1
@@ -33,6 +31,8 @@ def bubble_sort(data, draw, timeTick, isDrawing):
                         time.sleep(timeTick * 5)
                     else:
                         time.sleep(0.01 / 10 ** timeTick)
+                if isDrawing:
+                    draw(data, ['green' if x == j or x == j + 1 else 'white' if x >= len(data) - i else 'red' for x in range(len(data))])
         if tempCnt == 0:
             return cntChecks, cntSwitches
     return cntChecks, cntSwitches

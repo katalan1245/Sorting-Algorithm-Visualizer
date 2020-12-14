@@ -26,12 +26,12 @@ count_checks = 0
 
 
 # functions
-def draw(data, colorArray, first=False):
+def draw(data, colorArray, first=False, ending=False):
     canvas.delete('all')
     c_height = 800
     c_width = 1800
     x_width = c_width / (len(data) + 1)
-    spacing = 5
+    spacing = 10
     normalizedData = [i / (max(data)+0.00000001) for i in data]
     for i, height in enumerate(normalizedData):
 
@@ -40,14 +40,16 @@ def draw(data, colorArray, first=False):
         y0 = c_height - height * 800
 
         # bottom right
-        x1 = (i + 2) * x_width
+        x1 = (i + 1) * x_width + spacing
         y1 = c_height
         if first:
             rects[i] = canvas.create_rectangle(x0, y0, x1, y1, fill=colorArray[i])
         else:
             canvas.create_rectangle(x0, y0, x1, y1, fill=colorArray[i])
+        if ending:
+            root.update_idletasks()
+            time.sleep(0.0000001)
     root.update_idletasks()
-
 
 def Generate():
     global data
@@ -101,11 +103,10 @@ def startAlogirthm():
         count_checks = insertion_sort(data, draw, speed, isDrawing)
 
     if dEnd == 1:
-        draw(data, ['green' for i in range(len(data))])
+        end_time = time.time()
+        draw(data, ['green' for i in range(len(data))], ending=True)
     else:
         canvas.delete('all')
-
-    end_time = time.time()
 
 
 def clickStart():
@@ -155,13 +156,14 @@ Button(UI_frame, text='Generate', width=10, command=Generate).grid(row=0, column
 Button(UI_frame, text='Sort!', width=20, height=3, command=clickStart).grid(row=1, column=5, padx=5, pady=5)
 
 # Row[1]
-minEntry = Scale(UI_frame, from_=0, to=250, resolution=1, orient=HORIZONTAL, length=200, label='Min Value')
+minEntry = Scale(UI_frame, from_=1, to=250, resolution=1, orient=HORIZONTAL, length=200, label='Min Value')
 minEntry.grid(row=1, column=0, padx=5, pady=5)
 
-maxEntry = Scale(UI_frame, from_=0, to=250, resolution=1, orient=HORIZONTAL, length=200, label='Max Value')
+maxEntry = Scale(UI_frame, from_=1, to=250, resolution=1, orient=HORIZONTAL, length=200, label='Max Value')
 maxEntry.grid(row=1, column=1, padx=5, pady=5, sticky=W)
 
 speedScale = Scale(UI_frame, from_=0.2, to=5, resolution=0.2, digits=2, orient=HORIZONTAL, label='Select Speed')
+speedScale.set(1)
 speedScale.grid(row=1, column=2, padx=5, pady=5)
 
 # Row[2]
