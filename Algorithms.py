@@ -32,7 +32,7 @@ def bubble_sort(data, draw, timeTick, isDrawing):
                     else:
                         time.sleep(0.01 / 10 ** timeTick)
                 if isDrawing:
-                    draw(data, ['green' if x == j or x == j + 1 else 'white' if x >= len(data) - i else 'red' for x in range(len(data))])
+                    draw(data, ['green' if x == j or x == j + 1 else 'grey' if x >= len(data) - i else 'red' for x in range(len(data))])
         if tempCnt == 0:
             return cntChecks, cntSwitches
     return cntChecks, cntSwitches
@@ -219,7 +219,7 @@ def selection_sort(data, draw, timeTick, isDrawing):
                 min_ind = j
                 cnt_switches += 1
                 if isDrawing:
-                    draw(data, ['green' if x == j or x == min_ind or x < i else 'red' for x in range(len(data))])
+                    draw(data, ['green' if x == j or x == min_ind else 'grey' if x < i else 'red' for x in range(len(data))])
                 if timeTick != 5:
                     if timeTick < 1:
                         time.sleep(1.0 / float(timeTick))
