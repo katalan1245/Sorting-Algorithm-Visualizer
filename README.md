@@ -1,9 +1,11 @@
 # Sorting Algorithms Visualizer
 Sorting Algorithms Visualizer built with Python and Tkinter
 ## Algorithms:
-Bubble Sort <br />
-Selection Sort <br />
-Insertion Sort <br />
-Quick Sort <br />
-Merge Sort <br />
+<ul>
+  <li>Bubble Sort <br /></li>
+  <li>Selection Sort <br /></li>
+  <li>Insertion Sort <br /></li>
+  <li>Quick Sort <br /></li>
+  <li>Merge Sort <br /></li>
+</ul>
 Bogo Sort
